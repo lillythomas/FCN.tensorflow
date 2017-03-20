@@ -9,16 +9,6 @@ import argparse
 
 import TensorflowUtils as utils
 
-
-def read_dataset(data_dir):
-    with open(pickle_filepath, 'rb') as f:
-        training_records = result['training']
-        validation_records = result['validation']
-        del result
-
-    return training_records, validation_records
-
-
 def create_image_lists(image_dir):
     if not gfile.Exists(image_dir):
         print("Image directory '" + image_dir + "' not found.")

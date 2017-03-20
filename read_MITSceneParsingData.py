@@ -5,28 +5,13 @@ import random
 from six.moves import cPickle as pickle
 from tensorflow.python.platform import gfile
 import glob
+import argparse
 
 import TensorflowUtils as utils
 
-# DATA_URL = 'http://sceneparsing.csail.mit.edu/data/ADEChallengeData2016.zip'
-DATA_URL = 'http://data.csail.mit.edu/places/ADEchallenge/ADEChallengeData2016.zip'
-
 
 def read_dataset(data_dir):
-    pickle_filename = "MITSceneParsing.pickle"
-    pickle_filepath = os.path.join(data_dir, pickle_filename)
-    if not os.path.exists(pickle_filepath):
-        utils.maybe_download_and_extract(data_dir, DATA_URL, is_zipfile=True)
-        SceneParsing_folder = os.path.splitext(DATA_URL.split("/")[-1])[0]
-        result = create_image_lists(os.path.join(data_dir, SceneParsing_folder))
-        print ("Pickling ...")
-        with open(pickle_filepath, 'wb') as f:
-            pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
-    else:
-        print ("Found pickle file!")
-
     with open(pickle_filepath, 'rb') as f:
-        result = pickle.load(f)
         training_records = result['training']
         validation_records = result['validation']
         del result
@@ -44,7 +29,7 @@ def create_image_lists(image_dir):
     for directory in directories:
         file_list = []
         image_list[directory] = []
-        file_glob = os.path.join(image_dir, "images", directory, '*.' + 'jpg')
+        file_glob = os.path.join(image_dir, "images", directory, '*.' + 'png')
         file_list.extend(glob.glob(file_glob))
 
         if not file_list:

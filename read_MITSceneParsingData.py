@@ -9,6 +9,32 @@ import argparse
 
 import TensorflowUtils as utils
 
+# DATA_URL = 'http://sceneparsing.csail.mit.edu/data/ADEChallengeData2016.zip'
+#DATA_URL = 'http://data.csail.mit.edu/places/ADEchallenge/ADEChallengeData2016.zip'
+
+data_dir = "/mnt/cirrus/data/landuse/match/"
+
+def read_dataset(data_dir):
+    #pickle_filename = "MITSceneParsing.pickle"
+    #pickle_filepath = os.path.join(data_dir, pickle_filename)
+    #if not os.path.exists(pickle_filepath):
+        #utils.maybe_download_and_extract(data_dir, DATA_URL, is_zipfile=True)
+    #SceneParsing_folder = os.path.splitext(DATA_URL.split("/")[-1])[0]
+    result = create_image_lists(data_dir)
+    print ("Creating Image Lists ...")
+        #with open(pickle_filepath, 'wb') as f:
+            #pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
+    #else:
+        #print ("Found pickle file!")
+
+    #with open(pickle_filepath, 'rb') as f:
+        #result = pickle.load(f)
+    training_records = result['training']
+    validation_records = result['validation']
+        #del result
+
+    return training_records, validation_records
+
 def create_image_lists(image_dir):
     if not gfile.Exists(image_dir):
         print("Image directory '" + image_dir + "' not found.")

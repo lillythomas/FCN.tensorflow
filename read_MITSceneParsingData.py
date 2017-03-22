@@ -2,7 +2,7 @@ __author__ = 'charlie'
 import numpy as np
 import os
 import random
-from six.moves import cPickle as pickle
+#from six.moves import cPickle as pickle
 from tensorflow.python.platform import gfile
 import glob
 import argparse

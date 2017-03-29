@@ -14,7 +14,7 @@ tf.flags.DEFINE_string("logs_dir", "logs/", "path to logs directory")
 tf.flags.DEFINE_string("data_dir", "/mnt/cirrus/data/landuse/match/", "path to dataset")
 tf.flags.DEFINE_float("learning_rate", "1e-4", "Learning rate for Adam Optimizer")
 tf.flags.DEFINE_string("model_dir", "Model/", "Path to vgg model mat")
-tf.flags.DEFINE_bool('debug', "False", "Debug mode: True/ False")
+tf.flags.DEFINE_bool('debug', "True", "Debug mode: True/ False")
 tf.flags.DEFINE_string('mode', "train", "Mode train/ test/ visualize")
 
 MODEL_URL = 'http://www.vlfeat.org/matconvnet/models/beta16/imagenet-vgg-verydeep-19.mat'

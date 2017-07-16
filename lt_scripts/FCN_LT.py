@@ -2,10 +2,10 @@ from __future__ import print_function
 import tensorflow as tf
 import numpy as np
 
-import TensorflowUtils as utils
-import DataParser as scene_parsing
+import TensorflowUtils_LT as utils
+import DataParser_LT as scene_parsing
 import datetime
-import BatchDatasetReader as dataset
+import BatchDatasetReader_LT as dataset
 from six.moves import xrange
 
 FLAGS = tf.flags.FLAGS
